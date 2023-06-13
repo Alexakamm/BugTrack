@@ -20,6 +20,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
     <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.2.2" />
+    <PackageReference Include="Microsoft.Owin.Security.OpenIdConnect" Version="4.2.2" />
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="4.2.2" />
+    <PackageReference Include="Auth0.Core" Version="7.20.0" />
   </ItemGroup>
 
 </Project>
