@@ -14,7 +14,7 @@ namespace KammBugTracker.Controllers
 {
     public class AccountController : Controller
     {
-        public async Task Login(string returnUrl = "https://bugtrack.azurewebsites.net/Identity/Account/Login")
+        public async Task Login(string returnUrl = "/Home/Index")
         {
             var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
             // Indicate here where Auth0 should redirect the user after a login.
