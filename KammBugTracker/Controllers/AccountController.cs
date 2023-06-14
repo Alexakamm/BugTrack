@@ -14,13 +14,9 @@ namespace KammBugTracker.Controllers
 {
     public class AccountController : Controller
     {
-        public async Task Login(string returnUrl = "/Home/Index")
+        public async Task Login(string returnUrl = "/")
         {
             var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
-            // Indicate here where Auth0 should redirect the user after a login.
-            // Note that the resulting absolute Uri must be added to the
-            // **Allowed Callback URLs** settings for the app.
-
                 .WithRedirectUri(returnUrl)
                 .Build();
 
@@ -30,11 +26,7 @@ namespace KammBugTracker.Controllers
         [Authorize]
         public async Task Logout()
         {
-            string redirectUri = Url.Action("Index", "Home") ?? "/";
             var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
- // Indicate here where Auth0 should redirect the user after a logout.
-            // Note that the resulting absolute Uri must be added to the
-            // **Allowed Logout URLs** settings for the app.
                 .WithRedirectUri(Url.Action("Index", "Home"))
                 .Build();
 
@@ -53,12 +45,6 @@ namespace KammBugTracker.Controllers
             });
         }
 
-
-        /// <summary>
-        /// This is just a helper action to enable you to easily see all claims related to a user. It helps when debugging your
-        /// application to see the in claims populated from the Auth0 ID Token
-        /// </summary>
-        /// <returns></returns>
         [Authorize]
         public IActionResult Claims()
         {
@@ -70,4 +56,4 @@ namespace KammBugTracker.Controllers
             return View();
         }
     }
-}
+    }
