@@ -9,7 +9,6 @@ using System.Security.Claims;
 using Auth0.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 
-
 namespace KammBugTracker.Controllers
 {
     public class AccountController : Controller
@@ -34,6 +33,22 @@ namespace KammBugTracker.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
+        [HttpGet("callback")]
+        public async Task<IActionResult> Callback()
+        {
+            // Handle the callback and sign in the user
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            if (result.Succeeded)
+            {
+                // Redirect the user to the home page after successful authentication
+                return Redirect("/");
+            }
+
+            // Handle error (you might want to do this more gracefully in a production app)
+            return BadRequest("Error authenticating.");
+        }
+
         [Authorize]
         public IActionResult Profile()
         {
@@ -56,4 +71,4 @@ namespace KammBugTracker.Controllers
             return View();
         }
     }
-    }
+}
