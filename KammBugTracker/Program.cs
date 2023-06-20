@@ -8,10 +8,14 @@ using KammBugTracker.Support;
 using System.Net;
 
 using Microsoft.IdentityModel.Logging;
+using KammBugTracker.Data;
+using Microsoft.AspNetCore.Identity;
+using Humanizer.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //To use MVC we have to explicitly declare we are using it. Doing so will prevent a System.InvalidOperationException.
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuth0WebAppAuthentication(options =>
 {
